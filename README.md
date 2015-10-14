@@ -1,10 +1,10 @@
-#Deplist
+#### Deplist
 
 Deplist is a tiny shell script that can be used to find all non standard dependencies of a go package and report them grouped by their corresponding repository and installed version.
 
 Currently only git repositories are supported.
 
-### Usage
+#### Usage
 
 Print help text:
 ```
