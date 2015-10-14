@@ -5,12 +5,11 @@ panic () {
     exit 1
 }
 
+# Check arguments
 [ "$#" -eq 1 ] || panic "1 argument required, $# provided"
+[ -d "$GOPATH" ] || panic "GOPATH \"$GOPATH\" is not set or directory does not exist"
 
-if [ ! -d "$GOPATH" ]; then
-  panic "GOPATH \"$GOPATH\" is not set or directory does not exist"
-fi
-
+# Do magic
 go list -f '{{.Deps}}' $1/... \
   | tr -d "[]" \
   | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' \
